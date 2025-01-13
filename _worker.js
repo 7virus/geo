@@ -1,8 +1,8 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-const rootDomain = "foolvpn.me"; // Ganti dengan domain utama kalian
-const serviceName = "nautica"; // Ganti dengan nama workers kalian
+const rootDomain = "ndeso.web.id"; // Ganti dengan domain utama kalian
+const serviceName = "geo"; // Ganti dengan nama workers kalian
 const apiKey = ""; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
 const apiEmail = ""; // Ganti dengan email yang kalian gunakan
 const accountID = ""; // Ganti dengan Account ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
@@ -192,11 +192,10 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
       }
 
       body {
-        background: var(--darker);
+        background: #000;
         color: var(--light);
         min-height: 85vh;
-        background: url('https://picsum.photos/1024/1024?') no-repeat center center fixed;
-      }
+	}
 
       .quantum-container {
         max-width: 1200px;
@@ -695,10 +694,8 @@ button.small {
               <table class="quantum-table">
                 <thead>
                     <tr>
-                        <th>IP:PORT</th>
+                        <th>COUNTRY || ISP</th>
                         <th>STATUS IP</th>
-                        <th>COUNTRY</th>
-                        <th>ISP</th>
                         <th>VLESS</th>
                         <th>TROJAN</th>
                         <th>SHADOWSOCKS</th>
@@ -740,12 +737,11 @@ const ipPort = `${proxyIP}:${proxyPort}`;
 
       htmlContent += `
                         <tr class="hover:bg-gray-800 transition duration-300 ease-in-out">
-                       <td class="ip-cell">${ipPort}</td>
-                        <td class="proxy-status" id="status-${proxyIP}-${proxyPort}"><div class="spinner"></div></td>
+                       <td class="isp-cell">${org} || ${country}  <img width="60" src="https://installer.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded"></td>
+                        
+                       <td class="proxy-status" id="status-${proxyIP}-${proxyPort}"><div class="spinner"></div></td>
                         <td class="border border-gray-700 px-1 py-1 text-center">
-                       <img width="60" src="https://installer.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded"></td>
-                        <td class="isp-cell">${country} | ${org}</td>
-                        <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('VLess', '${proxies[1]}', '${proxies[4]}')">VLESS </button></td>
+                       <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('VLess', '${proxies[1]}', '${proxies[4]}')">VLESS </button></td>
                         <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('Trojan', '${proxies[0]}', '${proxies[3]}')">TROJAN</button></td>
                         <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('Shadowsocks', '${proxies[2]}', '${proxies[5]}')">SHADOWSOCKS</button>
                        </td>
@@ -802,7 +798,7 @@ const ipPort = `${proxyIP}:${proxyPort}`;
           fetch('${healthCheckUrl}')
             .then(response => response.json())
             .then(data => {
-              const statusElement = document.getElementById('status-${proxyIP}-${proxyPort}');
+              const statusElement = document.getElementById('status-${proxyIP}:${proxyPort}');
               const { proxyStatus, ip, asn, isp, country, city, port } = data;
               
               if (proxyStatus === 'ACTIVE') {
@@ -819,7 +815,7 @@ const ipPort = `${proxyIP}:${proxyPort}`;
 
             })
             .catch(error => {
-              const statusElement = document.getElementById('status-${proxyIP}-${proxyPort}');
+              const statusElement = document.getElementById('status-${proxyIP}:${proxyPort}');
               statusElement.textContent = 'Error';
               statusElement.style.color = 'cyan';
             });
