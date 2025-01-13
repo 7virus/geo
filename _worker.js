@@ -740,7 +740,6 @@ const ipPort = `${proxyIP}:${proxyPort}`;
                        <td class="isp-cell">${org} || ${country}  <img width="60" src="https://installer.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded"></td>
                         
                        <td class="proxy-status" id="status-${proxyIP}-${proxyPort}"><div class="spinner"></div></td>
-                        <td class="border border-gray-700 px-1 py-1 text-center">
                        <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('VLess', '${proxies[1]}', '${proxies[4]}')">VLESS </button></td>
                         <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('Trojan', '${proxies[0]}', '${proxies[3]}')">TROJAN</button></td>
                         <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('Shadowsocks', '${proxies[2]}', '${proxies[5]}')">SHADOWSOCKS</button>
