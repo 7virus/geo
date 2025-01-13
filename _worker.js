@@ -68,6 +68,493 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+      :root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+        --card-bg: rgba(8, 12, 20, 0.95);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      body {
+        background: var(--darker);
+        color: var(--light);
+        min-height: 85vh;
+        background: url('https://picsum.photos/1024/1024?') no-repeat center center fixed;
+      }
+
+      .quantum-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        perspective: 1000px;
+        background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            animation: fadeIn 1s ease-in-out;
+            overflow-y: auto;
+      }
+
+      .quantum-card {
+        max-width: 100%;
+        background: rgba(6, 18, 67, 0.50);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--glow);
+        transform-style: preserve-3d;
+        
+      }
+
+      @keyframes cardFloat {
+        0%, 100% { transform: translateY(0) rotateX(0); }
+        50% { transform: translateY(-10px) rotateX(2deg); }
+      }
+
+      .quantum-title {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 4rem;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        position: relative;
+        
+      }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+      }
+
+      .quantum-table {
+        width: 100%;
+        min-width: 800px;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+
+.quantum-table td {
+  padding: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: rgba(0, 255, 136, 0.03);
+  border-left: 1px solid rgba(0, 255, 136, 0.2); /* Garis vertikal lebih halus */
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2); /* Garis horizontal lebih halus */
+  transition: all 0.3s ease;
+}
+
+.quantum-table tr {
+  transition: all 0.3s ease;
+}
+
+.quantum-table tr:hover td {
+  background: rgba(0, 255, 136, 0.08);
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+}
+
+/* Menghilangkan border pada baris terakhir dan kolom terakhir agar lebih bersih */
+.quantum-table tr:last-child td {
+  border-bottom: none;
+}
+
+.quantum-table td:last-child {
+  border-right: none;
+}
+
+.quantum-table {
+  border-collapse: collapse; /* Menyatukan border antar elemen */
+}
+
+.quantum-table th, .quantum-table td {
+  padding: 1rem;
+  text-align: center; /* Menyusun teks di tengah */
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Garis pembatas bawah header tabel dengan warna hijau halus */
+.quantum-table th {
+        background: rgba(0, 255, 136, 0.1);
+        color: var(--primary);
+        padding: 1.2rem;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 2px solid var(--primary);
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+/* Garis pembatas vertikal antar kolom dengan warna hijau halus */
+.quantum-table th, .quantum-table td {
+  border-right: 1px solid rgba(0, 255, 136, 0.3); /* Garis vertikal hijau halus antar kolom */
+}
+
+/* Garis pembatas bawah setiap baris data dengan warna hijau halus */
+.quantum-table td {
+  background: rgba(0, 255, 136, 0.03);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2); /* Garis horizontal hijau halus antar baris */
+  transition: all 0.3s ease;
+}
+
+.quantum-table tr:hover td {
+  background: rgba(0, 255, 136, 0.08);
+  transform: scale(1.01);
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+}
+
+/* Tidak ada perubahan pada border, biarkan semuanya tampil */
+.quantum-table td {
+  border: 1px solid rgba(0, 255, 136, 0.2); /* Contoh: border tetap untuk semua sel */
+}
+
+.quantum-table td:last-child {
+  border-right: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+      .quantum-toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 1rem 2rem;
+        background: var(--primary);
+        color: var(--dark);
+        border-radius: 12px;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        transform: translateY(100%);
+        opacity: 0;
+        
+        z-index: 1000;
+      }
+
+      @keyframes toastSlide {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .quantum-container {
+          padding: 0.5rem;
+          margin: 0.5rem;
+        }
+        
+        .quantum-card {
+          padding: 1rem;
+          margin: 0;
+          width: 100%;
+          border-radius: 10px;
+          max-width: 100%;
+        }
+    
+        .quantum-title {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+    
+        .table-wrapper {
+          margin: 0.5rem 0;
+          padding: 0;
+          border-radius: 10px;
+          max-height: 60vh; /* Restrict the height of the table */
+          overflow-y: auto; /* Allow scrolling within the table */
+          background: rgba(6, 18, 67, 0.89);
+        }
+    
+        .quantum-toast {
+          left: 1rem;
+          right: 1rem;
+          bottom: 1rem;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .quantum-card {
+          padding: 0.5rem;
+          max-width: 100%;
+        }
+    
+        .quantum-title {
+          font-size: 1.5rem;
+        }
+    
+        .table-wrapper {
+          margin: 0.5rem -0.5rem;
+          padding: 0 0.5rem;
+        }
+    
+        .quantum-table {
+          font-size: 0.8rem;
+        }
+    
+      .table-wrapper {
+        width: 100%;
+        max-height: calc(80vh - 200px); /* Atur tinggi maksimal untuk scroll */
+        overflow-y: auto; /* Aktifkan scroll vertikal */
+        -webkit-overflow-scrolling: touch; /* Lancar di perangkat touch */
+        margin: 1rem 0;
+        border-radius: 10px;
+        background: rgba(0, 255, 136, 0.02);
+      }
+
+      .table-wrapper:hover {
+        pointer-events: auto; /* Izinkan scroll pada hover */
+      }
+
+      .table-wrapper::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .table-wrapper::-webkit-scrollbar-track {
+        background: rgba(0, 255, 136, 0.1);
+        border-radius: 4px;
+      }
+
+      .table-wrapper::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+      }
+
+      .table-wrapper::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary);
+      }
+      
+    button {
+    background-color: rgba(46, 204, 113, 0.8); /* Warna hijau dengan transparansi yang lebih jelas */
+    color: white;
+    padding: 8px 18px;
+    margin: 1px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: rgba(46, 204, 113, 1); /* Warna hijau solid lebih cerah saat hover */
+    transform: translateY(-2px); /* Efek pergeseran saat hover */
+}
+
+button:active {
+    transform: translateY(2px); /* Efek pergeseran saat aktif */
+}
+
+button.small {
+    padding: 8px 13px;
+    font-size: 16px;
+    border-radius: 7px;
+}
+.small-font-popup {
+    font-size: 13px;
+}
+
+.close-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 11px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+}
+
+    .quantum-title a:hover {
+            color: #2980b9;
+        }
+
+.quantum-form {
+  margin-top: 20px; /* Dikurangi */
+  display: flex;
+  justify-content: center;
+}
+
+.quantum-input {
+  padding: 8px 16px; /* Dikurangi */
+  width: 65%; /* Dikurangi */
+  max-width: 300px; /* Dikurangi */
+  color: white;
+  border-radius: 15px; /* Dikurangi */
+  border: 1.5px solid rgba(46, 204, 113, 0.7); /* Border lebih tipis */
+  background: rgba(46, 204, 113, 0.3); 
+  backdrop-filter: blur(6px); /* Blur sedikit dikurangi */
+  font-size: 14px; /* Dikurangi */
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.quantum-input:focus {
+  border-color: rgba(46, 204, 113, 1);
+  background: rgba(46, 204, 113, 0.4);
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.5); /* Shadow lebih kecil */
+}
+
+.quantum-button {
+  padding: 8px 16px; /* Dikurangi */
+  margin-left: 15px; /* Dikurangi */
+  border: none;
+  background: rgba(46, 204, 113, 0.4);
+  backdrop-filter: blur(6px); /* Blur sedikit dikurangi */
+  color: white;
+  border-radius: 15px; /* Dikurangi */
+  font-size: 14px; /* Dikurangi */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.quantum-button:hover {
+  background: rgba(46, 204, 113, 0.5);
+  transform: translateY(-1px); /* Transformasi hover dikurangi */
+}
+
+.quantum-button:active {
+  transform: translateY(1px); /* Transformasi aktif dikurangi */
+}
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.profile>img {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #222;
+    border-radius: 100%;
+}
+.profile>p {
+    font-size: 1.8em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+.link>a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 7px;
+    margin: 3px 40px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.link>a:hover {
+    background-color: transparent;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+}
+.footer>i {
+    color: white;
+    font-size: 20px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.quantum-pagination {
+    margin-top: 20px; /* Dikurangi */
+    display: flex;
+    justify-content: center;
+}
+
+.quantum-pagination a {
+    padding: 8px 15px; /* Dikurangi */
+    border: 1.5px solid #3498db; /* Lebar border dikurangi */
+    color: #3498db;
+    text-decoration: none;
+    border-radius: 15px; /* Dikurangi */
+    margin: 0 8px; /* Dikurangi */
+    font-size: 14px; /* Dikurangi */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.quantum-pagination a:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-1px); /* Dikurangi */
+}
+
+.quantum-pagination .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+</style>
+
+
 </head>
 <body class="bg-light">
     <div class="container py-5">
@@ -405,7 +892,7 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
 
       const { proxyIP, proxyPort, country, org } = proxy;
       const ipPort = `${proxyIP}:${proxyPort}`;
-      const Status = `https://ipcf.vlessipcf.us.kg/key=geo/ip=${proxyIP}:${proxyPort}`;
+      const Status = `https://sub.gpj.us.kg/geo-ip?ip=${proxyIP}:${proxyPort}`;
 
       const uriWithPath = new URL(uri);
       uriWithPath.searchParams.set("path", `/${proxyIP}-${proxyPort}`);
