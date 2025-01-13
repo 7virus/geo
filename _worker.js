@@ -998,7 +998,7 @@ button.small {
           fetch('${Status}')
             .then(response => response.json())
             .then(data => {
-              const statusElement = document.getElementById('status-${proxyIP}-${proxyPort}');
+              const statusElement = document.getElementById('status-${proxyIP}:${proxyPort}');
               const { proxyStatus, ip, asn, isp, country, city, port } = data;
               
               if (proxyStatus === 'ACTIVE') {
