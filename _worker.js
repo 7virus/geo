@@ -892,7 +892,7 @@ button.small {
 
       const { proxyIP, proxyPort, country, org } = proxy;
       const ipPort = `${proxyIP}:${proxyPort}`;
-      const Status = `https://sub.gpj.us.kg/geo-ip?ip=${proxyIP}:${proxyPort}`;
+      const Status = `https://geo.ndeso.web.id/key=geo/ip=${proxyIP}:${proxyPort}`;
 
       const uriWithPath = new URL(uri);
       uriWithPath.searchParams.set("path", `/${proxyIP}-${proxyPort}`);
@@ -998,7 +998,7 @@ button.small {
           fetch('${Status}')
             .then(response => response.json())
             .then(data => {
-              const statusElement = document.getElementById('status-${proxyIP}:${proxyPort}');
+              const statusElement = document.getElementById('status-${proxyIP}-${proxyPort}');
               const { proxyStatus, ip, asn, isp, country, city, port } = data;
               
               if (proxyStatus === 'ACTIVE') {
