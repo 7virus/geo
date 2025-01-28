@@ -11,5 +11,5 @@ enabled = true
 
 
 [[routes]]
-pattern = "geo.ndeso.web.id"
+pattern = "geo.7topplug.us.kg"
 custom_domain = true
