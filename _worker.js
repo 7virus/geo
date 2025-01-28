@@ -1,7 +1,7 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-const rootDomain = "ndeso.web.id"; // Ganti dengan domain utama kalian
+const rootDomain = "7to.7topplug.us.kg"; // Ganti dengan domain utama kalian
 const serviceName = "geo"; // Ganti dengan nama workers kalian
 const apiKey = ""; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
 const apiEmail = ""; // Ganti dengan email yang kalian gunakan
@@ -84,7 +84,7 @@ function buildCountryFlag() {
         flagElement += `<a href="/?cc=${flag}" class="py-1">
       <img width="35"
         style="bg-dark margin-right: 8px; border: 3px solid transparent; border-radius: 50%; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); flex-shrink: 0; max-width: 55px; max-height: 55px; background: linear-gradient(90deg, #39ff14, #008080); border-image: linear-gradient(90deg, #39ff14, #008080) 1;"
-        src="https://installer.us.kg/circle-flags/flags/${flag.toLowerCase()}.svg" />
+        src="https://7to7.7topplug.us.kg/circle-flags/flags/${flag.toLowerCase()}.svg" />
         </a>`;
       } catch (err) {
         console.error(`Error generating flag for country: ${flag}`, err);
@@ -168,7 +168,7 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREE VPN CLOUDFLARE</title>
+    <title>TOpBOUYZ🪂 | ☁️SkyClouds☁️| 🤿🏂🪂🔫🏂VVIP | ☁️🪂🏂🔫🤿🎮🤺🌊PREMIUM</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -737,7 +737,7 @@ const ipPort = `${proxyIP}:${proxyPort}`;
 
       htmlContent += `
                         <tr class="hover:bg-gray-800 transition duration-300 ease-in-out">
-                       <td class="isp-cell">${org} || ${country}  <img width="60" src="https://installer.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded"></td>
+                       <td class="isp-cell">${org} || ${country}  <img width="60" src="https://7to7.7topplug.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded"></td>
                         
                        <td class="proxy-status" id="status-${proxyIP}-${proxyPort}"><div class="spinner"></div></td>
                        <td><button class="px-3 py-1 bg-gradient-to-r from-[#39ff14] to-[#008080] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="showOptions('VLess', '${proxies[1]}', '${proxies[4]}')">VLESS </button></td>
@@ -751,7 +751,7 @@ const ipPort = `${proxyIP}:${proxyPort}`;
         width: '270px',
         html: \`
         <div class="flex items-center justify-center mb-2">
-            <img width="70" src="https://installer.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded" alt="${country} Flag">
+            <img width="70" src="https://7to7.7topplug.us.kg/circle-flags/flags/${country.toLowerCase()}.svg" class="ms-2 rounded" alt="${country} Flag">
         </div>
             <div class="h-px bg-[#4682b4] shadow-sm"></div>
 <div class="text-xs">IP : ${ipPort}</div>
@@ -1767,7 +1767,7 @@ class Document {
 
       // Assign proxies
       proxyGroupElement += `<div class="lozad scale-95 mb-2 bg-white dark:bg-neutral-800 transition-transform duration-200 rounded-lg p-4 w-60 border-2 border-neutral-800">`;
-      proxyGroupElement += `  <div id="countryFlag" class="absolute -translate-y-9 -translate-x-2 border-2 border-neutral-800 rounded-full overflow-hidden"><img width="32" src="https://installer.us.kg/circle-flags/flags/${proxyData.country.toLowerCase()}.svg" /></div>`;
+      proxyGroupElement += `  <div id="countryFlag" class="absolute -translate-y-9 -translate-x-2 border-2 border-neutral-800 rounded-full overflow-hidden"><img width="32" src="https://7to7.7topplug.us.kg/circle-flags/flags/${proxyData.country.toLowerCase()}.svg" /></div>`;
       proxyGroupElement += `  <div>`;
       proxyGroupElement += `    <div id="ping-${i}" class="animate-pulse text-xs font-semibold dark:text-white">Idle ${proxyData.proxyIP}:${proxyData.proxyPort}</div>`;
       proxyGroupElement += `  </div>`;
@@ -1812,7 +1812,7 @@ class Document {
     for (const flag of new Set(flagList)) {
       flagElement += `<a href="/sub?cc=${flag}${
         proxyBankUrl ? "&proxy-list=" + proxyBankUrl : ""
-      }" class="py-1" ><img width=20 src="https://installer.us.kg/circle-flags/flags/${flag.toLowerCase()}.svg" /></a>`;
+      }" class="py-1" ><img width=20 src="https://7to7.7topplug.us.kg/circle-flags/flags/${flag.toLowerCase()}.svg" /></a>`;
     }
 
     this.html = this.html.replaceAll("PLACEHOLDER_BENDERA_NEGARA", flagElement);
