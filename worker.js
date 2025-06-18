@@ -1,7 +1,7 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-const rootDomain = "7to.7topplug.us.kg"; // Ganti dengan domain utama kalian
+const rootDomain = "7net.yopnet.dpdns.org"; // Ganti dengan domain utama kalian
 const serviceName = "geo"; // Ganti dengan nama workers kalian
 const apiKey = ""; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
 const apiEmail = ""; // Ganti dengan email yang kalian gunakan
@@ -15,7 +15,7 @@ let cachedProxyList = [];
 const APP_DOMAIN = `${serviceName}.${rootDomain}`;
 const PORTS = [443, 80];
 const PROTOCOLS = ["trojan", "vless", "ss"];
-const PROXY_BANK_URL = "https://cf.cepu.us.kg/update_proxyip.txt";
+const PROXY_BANK_URL = "https://github.com/7virus/geo/update_proxyip.txt";
 const DNS_SERVER_ADDRESS = "1.1.1.1";
 const DNS_SERVER_PORT = 53;
 const PROXY_PER_PAGE = 24;
